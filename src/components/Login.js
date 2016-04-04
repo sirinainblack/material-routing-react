@@ -17,7 +17,7 @@ var Login = React.createClass({
     $.ajax({
       url: 'http://localhost:3000/users/signin',
       type: 'POST',
-      data: {username: this.state.username},
+      data: {username: this.props.username},
 
       success: function (data) {
         if (data === 'error') {
@@ -25,10 +25,10 @@ var Login = React.createClass({
         }
         else {
           console.log('auth reussie !');
-          console.log('terrlis beforet= ' + this.state.list);
+          console.log('terrlis beforet= ' + this.props.list);
 
-          this.setState({list: data});
-          console.log('list= ' + this.state.list);
+          this.props.list = data;
+          console.log('list= ' + this.props.list);
         }
       }.bind(
         this),
@@ -40,7 +40,7 @@ var Login = React.createClass({
 
   },
   handleChange: function (event) {
-    this.setState({username: event.target.value});
+    this.props.username = event.target.value;
   },
   render: function () {
     return (
@@ -49,7 +49,7 @@ var Login = React.createClass({
         <div>
           <TextField
             hintText="Email"
-            value={this.state.username} onChange={this.handleChange} />
+            value={this.props.username} onChange={this.handleChange} />
           <RaisedButton label="Log In" primary={true} style={style} onTouchTap={this.handleTouchTap} />
         </div>
       </div>

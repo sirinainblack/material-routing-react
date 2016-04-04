@@ -46,6 +46,9 @@ var Title = React.createClass({
     this.getTerroir();
     return (
         <div>
+          <h2>username {this.props.valueLink}</h2>
+
+          <input type="text" valueLink={this.props.valueLink} />
     <Card>
     <CardHeader title= {this.state.title} avatar="src/images/ic_my_location_48px-128.png" />
       </Card>
